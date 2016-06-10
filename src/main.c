@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:43:59 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/08 15:35:06 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/10 14:18:35 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ static int	ft_key(int key,t_env *env)
 
 int			main(int argc, char **argv)
 {
-	t_env	*env;
+//	t_env	*env;
 
+	ft_read(argv[1]);/*
 	env = (t_env*)malloc(sizeof(t_env));
 	env->pixel = (t_pixel*)malloc(sizeof(t_pixel));
 	env->mlx = 0;
@@ -63,6 +64,6 @@ int			main(int argc, char **argv)
 	env->window = mlx_new_window(env->mlx, 400, 400, "fdf");
 	ft_draw(env);
 	mlx_key_hook(env->window, ft_key, env);
-	mlx_loop(env->mlx);
+	mlx_loop(env->mlx);*/
 	return (0);
 }
