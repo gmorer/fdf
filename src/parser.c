@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 15:31:09 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/10 18:00:20 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/13 10:21:55 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ char		***ft_read(char *argv)
 	put3d(rslt);
 	if (testresult(rslt) == 0)
 	{
+		ft_putendl("error");
 		return (NULL);
 	}
 	ft_putendl("okay");

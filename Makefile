@@ -6,7 +6,7 @@
 #    By: gmorer <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/05/20 11:35:32 by gmorer            #+#    #+#              #
-#    Updated: 2016/06/10 12:04:05 by gmorer           ###   ########.fr        #
+#    Updated: 2016/06/13 11:18:23 by gmorer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ HPATH = inc/ libft/ minilibx_macos/
 INC = $(addprefix -I , $(HPATH))
 CFILES = main.c\
 		 get_next_line.c\
-		 parser.c
+		 parser.c\
+		 ft_mlx_lib.c\
+		 print.c
 OFILES = $(CFILES:.c=.o)
 HFILES = inc/fdf.h libft/libft.h
 OBJ = $(addprefix $(OPATH), $(OFILES))
