@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:44:38 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/13 17:14:08 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/15 16:10:39 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define SCREEN_X 1920
+# define SCREEN_Y 1080
+# define SPACE 49
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>
@@ -50,13 +53,11 @@ typedef struct		s_env
 	double	zoom;
 	int		posx;
 	int		posy;
+	int		side;
 }					t_env;
 
 int		ft_readprint(t_env *env);
 void	ft_mlx_line(t_line *line, t_env *env);
 char	***ft_read(char *argv);
 int		get_next_line(int fd, char **line);
-char	**ft_strstradd(char *str, char **tab);
-char	**ft_strstrnew(size_t i);
-size_t	ft_strstrlen(char **c);
 #endif

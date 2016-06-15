@@ -6,42 +6,22 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:43:59 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/13 17:37:10 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/15 16:09:36 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
-static void	ft_draw(t_env *env)
-{
-	int i;
-	int z;
 
-	i = 0;
-	while (i < 50)
-	{
-		z = 0;
-		while (z < 50)
-		{
-			mlx_pixel_put(env->mlx, env->window, env->pixel->x + i, env->pixel->y + z, 0x00FF0000);
-			z++;
-		}
-		i++;
-	}
-}
-*/
-static int	ft_key(int key,t_env *env)
+static int	ft_key(int key, t_env *env)
 {
-	//ft_putnbr(key);
-	//ft_putchar('\n');
 	if (key == RIGHT)
-		env->xaxe += 0.2;
+		env->xaxe -= 0.1;
 	if (key == LEFT)
-		env->xaxe -= 0.2;
+		env->xaxe += 0.1;
 	if (key == DOWN)
-		env->yaxe += 0.2;
+		env->yaxe -= 0.1;
 	if (key == UP)
-		env->yaxe -= 0.2;
+		env->yaxe += 0.1;
 	if (key == ESC)
 		exit(0);
 	if (key == SHIFT)
@@ -49,17 +29,18 @@ static int	ft_key(int key,t_env *env)
 	if (key == CTR && env->zoom > 0.1)
 		env->zoom -= 0.1;
 	if (key == KEY_W)
-		env->posy += 10;
-	if (key == KEY_S)
 		env->posy -= 10;
+	if (key == KEY_S)
+		env->posy += 10;
 	if (key == KEY_A)
-		env->posx += 10;
-	if (key == KEY_D)
 		env->posx -= 10;
-	ft_putnbr(key);
-	ft_putchar('\n');
+	if (key == KEY_D)
+		env->posx += 10;
+	if (key == SPACE && env->side == 1)
+		env->side = 0;
+	else if (key == SPACE && env->side == 0)
+		env->side = 1;
 	mlx_clear_window(env->mlx, env->window);
-	//ft_draw(env);
 	ft_readprint(env);
 	return (1);
 }
@@ -80,21 +61,20 @@ int			main(int argc, char **argv)
 	line = (t_line*)malloc(sizeof(t_line));
 	env->mlx = 0;
 	env->window = 0;
-	env->xaxe = 5;
+	env->xaxe = 0;
 	env->yaxe = 0;
+	env->side = 1;
+	env->posx = SCREEN_X / 2;
+	env->posy = SCREEN_Y / 2;
 	env->zoom = 1;
-	if((env->map = ft_read(argv[1])) == NULL)
+	if ((env->map = ft_read(argv[1])) == NULL)
 		return (0);
 	env->mlx = mlx_init();
-	env->window = mlx_new_window(env->mlx, 800, 800, "fdf");
-	line->xa = 10;
-	line->ya = 10;
-	line->xb = 170;
-	line->yb = 70;
+	env->window = mlx_new_window(env->mlx, SCREEN_X, SCREEN_Y, "fdf");
 	mlx_key_hook(env->window, ft_key, env);
 	mlx_hook(env->window, 17, (1L << 17), ft_exit, env);
-	//ft_mlx_line(line, env);
 	ft_readprint(env);
 	mlx_loop(env->mlx);
+	free(env);
 	return (0);
 }

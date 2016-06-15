@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 15:31:09 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/13 10:21:55 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/15 13:42:21 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_isnum(char *str)
 	return (1);
 }
 
-static int	testresult(char	***rslt)
+static int	testresult(char ***rslt)
 {
 	int	i;
 	int y;
@@ -41,33 +41,12 @@ static int	testresult(char	***rslt)
 	return (1);
 }
 
-static void	put3d(char ***rslt)
-{
-	int i;
-	int y;
-
-	i = 0;
-	y = 0;
-	while (rslt[i] != NULL)
-	{
-		y = 0;
-		while(rslt[i][y] != NULL)
-		{
-			ft_putstr(rslt[i][y]);
-			y++;
-		}
-		ft_putchar('\n');
-		i++;
-	}
-	return;
-}
-
 static char	***getcherddd(char *argv)
 {
-	char ***rslt;
-	int len;
-	int fd;
-	char *line;
+	char	***rslt;
+	int		len;
+	int		fd;
+	char	*line;
 
 	line = NULL;
 	len = 0;
@@ -93,24 +72,19 @@ char		***ft_read(char *argv)
 	char	*line;
 	int		len;
 
-	if(!(rslt = getcherddd(argv)))
+	if (!(rslt = getcherddd(argv)) ||
+		((fd = open(argv, O_RDONLY)) == -1))
 	{
 		ft_putendl("error");
 		return (NULL);
 	}
 	len = 0;
-	if ((fd = open(argv, O_RDONLY)) == -1)
-	{
-		ft_putendl("error");
-		return (NULL);
-	}
 	while (get_next_line(fd, &line) > 0)
 	{
 		rslt[len] = ft_strsplit(line, ' ');
 		len++;
 	}
 	close(fd);
-	put3d(rslt);
 	if (testresult(rslt) == 0)
 	{
 		ft_putendl("error");
