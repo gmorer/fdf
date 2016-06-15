@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:43:59 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/15 16:09:36 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/15 16:44:17 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,24 @@
 
 static int	ft_key(int key, t_env *env)
 {
-	if (key == RIGHT)
-		env->xaxe -= 0.1;
-	if (key == LEFT)
-		env->xaxe += 0.1;
-	if (key == DOWN)
-		env->yaxe -= 0.1;
-	if (key == UP)
-		env->yaxe += 0.1;
-	if (key == ESC)
-		exit(0);
+	if (key == RIGHT || key == LEFT)
+		env->xaxe += (key == RIGHT ? -0.1 : 0.1);
+	if (key == DOWN || key == UP)
+		env->yaxe += (key == DOWN ? -0.1 : 0.1);
 	if (key == SHIFT)
 		env->zoom += 0.1;
 	if (key == CTR && env->zoom > 0.1)
 		env->zoom -= 0.1;
-	if (key == KEY_W)
-		env->posy -= 10;
-	if (key == KEY_S)
-		env->posy += 10;
-	if (key == KEY_A)
-		env->posx -= 10;
-	if (key == KEY_D)
-		env->posx += 10;
+	if (key == KEY_W || key == KEY_S)
+		env->posy += (key == KEY_W ? -10 : 10);
+	if (key == KEY_A || key == KEY_D)
+		env->posx += (key == KEY_A ? -10 : 10);
 	if (key == SPACE && env->side == 1)
 		env->side = 0;
 	else if (key == SPACE && env->side == 0)
 		env->side = 1;
+	if (key == ESC)
+		exit(0);
 	mlx_clear_window(env->mlx, env->window);
 	ft_readprint(env);
 	return (1);

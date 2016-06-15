@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 11:05:40 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/15 16:10:19 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/15 16:37:08 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static	void	ft_getline(int x, int y, t_env *env)
 	else
 		line->ya = ((y * (sin(env->yaxe / 2) * 10)) + (ft_atoi(env->map[y][x]) *
 						(sin(env->yaxe) * 1)) + ft_atoi(env->map[y][x]));
-
 	line->ya = line->ya * 1 * env->zoom + env->posy;
 	if (env->map[y][x + 1])
 		calcxy(x + 1, y, line, env);
