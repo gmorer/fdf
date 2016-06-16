@@ -12,10 +12,10 @@
 
 NAME = fdf
 CC = clang
-CFLAGS = -L minilibx -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -L/usr/include -lXext -lX11 -lmlx -lm
 CPATH = src/
 OPATH = obj/
-HPATH = inc/ libft/ minilibx_macos/
+HPATH = inc/ libft/ minilibx/
 INC = $(addprefix -I , $(HPATH))
 CFILES = main.c\
 		 get_next_line.c\
@@ -32,8 +32,14 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 		make -C libft
-		make -C minilibx_macos
+		make -C minilibx
 		$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
+
+linux : $(OBJ)
+		make -C libft
+		make -C minilibx
+		$(CC) $(CFLAGS) $(OBJ) libft/libft.a minilibx/libmlx.a -o $(NAME)
+
 
 debug: $(OBJ)
 		make -C libft
