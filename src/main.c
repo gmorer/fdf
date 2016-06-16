@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:43:59 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/15 16:44:17 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/16 17:19:40 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,29 @@ static int	ft_key(int key, t_env *env)
 	return (1);
 }
 
-int			ft_exit(t_env *env)
+static void	freemap(t_env *env)
+{
+	int y;
+	int x;
+
+	y = 0;
+	x = 0;
+	while (env->map[y])
+	{
+		x = 0;
+		while (env->map[y][x])
+		{
+			free(env->map[y][x]);
+			x++;
+		}
+		y++;
+	}
+}
+
+static int	ft_exit(t_env *env)
 {
 	(void)env;
+	freemap(env);
 	exit(0);
 	return (0);
 }
@@ -58,7 +78,7 @@ int			main(int argc, char **argv)
 	env->side = 1;
 	env->posx = SCREEN_X / 2;
 	env->posy = SCREEN_Y / 2;
-	env->zoom = 1;
+	env->zoom = 4;
 	if ((env->map = ft_read(argv[1])) == NULL)
 		return (0);
 	env->mlx = mlx_init();
@@ -67,6 +87,7 @@ int			main(int argc, char **argv)
 	mlx_hook(env->window, 17, (1L << 17), ft_exit, env);
 	ft_readprint(env);
 	mlx_loop(env->mlx);
+	freemap(env);
 	free(env);
 	return (0);
 }

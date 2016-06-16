@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:44:38 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/15 16:36:44 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/16 17:26:25 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,14 @@ typedef struct		s_line
 	int		ya;
 	int		xb;
 	int		yb;
+	int		dx;
+	int		dy;
+	int		i;
+	int		xinc;
+	int		yinc;
+	int		cumul;
+	int		x;
+	int		y;
 }					t_line;
 
 typedef struct		s_env
@@ -56,8 +64,8 @@ typedef struct		s_env
 	int		side;
 }					t_env;
 
-int		ft_readprint(t_env *env);
-void	ft_mlx_line(t_line *line, t_env *env);
-char	***ft_read(char *argv);
-int		get_next_line(int fd, char **line);
+int					ft_readprint(t_env *env);
+void				ft_mlx_line(t_line *line, t_env *env);
+char				***ft_read(char *argv);
+int					get_next_line(int fd, char **line);
 #endif
