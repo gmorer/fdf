@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:44:38 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/16 17:26:25 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/16 17:50:13 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct		s_env
 	void	*window;
 	double	xaxe;
 	double	yaxe;
+	double	sinxaxe;
+	double	sinyaxe;
 	char	***map;
 	double	zoom;
 	int		posx;
