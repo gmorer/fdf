@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 11:05:40 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/17 14:28:53 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/17 17:53:24 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static	void	calcxy(int x, int y, t_line *line, t_env *env)
 	line->xb = line->xb * env->zoom + env->posx;
 	if (env->side == 1)
 	{
+		ft_putendl("lol");
 		line->yb = ((y * (sin(env->yaxe / 2) * 10)) - (ft_atoi(env->map[y][x]) *
 						env->sinyaxe) - ft_atoi(env->map[y][x]));
+		ft_putendl("lol1");
 	}
 	else
 	{
@@ -44,10 +46,21 @@ static	void	ft_getline(int x, int y, t_env *env)
 		line->ya = ((y * (sin(env->yaxe / 2) * 10)) + (ft_atoi(env->map[y][x]) *
 						(env->sinyaxe)) + ft_atoi(env->map[y][x]));
 	line->ya = line->ya * 1 * env->zoom + env->posy;
-	if (env->map[y][x + 1])
+	ft_putendl("start");
+	if (env->map[y] && env->map[y][x + 1])
+	{
+		ft_putstr("x = ");
+		ft_putnbr(x);
+		ft_putstr("  y = ");
+		ft_putnbr(y);
+		ft_putendl("\nend");
 		calcxy(x + 1, y, line, env);
-	if (env->map[y + 1])
+		ft_putendl("end2");
+	}
+		if (env->map[y + 1] && env->map[y + 1][x])
+		{
 		calcxy(x, y + 1, line, env);
+		}
 	free(line);
 }
 

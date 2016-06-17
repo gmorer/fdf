@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 15:31:09 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/17 14:35:40 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/17 17:48:58 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ static char	***getcherddd(char *argv)
 	if (len == 0)
 		return (NULL);
 	rslt = malloc(sizeof(char**) * (len + 1));
+	ft_putnbr(len);
+	ft_putchar('\n');
 	while (len)
 	{
 		rslt[len] = NULL;
