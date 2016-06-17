@@ -6,11 +6,20 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:43:59 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/16 17:27:42 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/17 14:31:45 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	ft_img_put(t_env *env)
+{
+	env->img = mlx_new_image(env->mlx, SCREEN_X, SCREEN_Y);
+	ft_readprint(env);
+	mlx_put_image_to_window(env->mlx, env->window, env->img, 0, 0);
+	mlx_destroy_image(env->mlx, env->img);
+	return (0);
+}
 
 static int	ft_key(int key, t_env *env)
 {
@@ -32,8 +41,9 @@ static int	ft_key(int key, t_env *env)
 		env->side = 1;
 	if (key == ESC)
 		exit(0);
-	mlx_clear_window(env->mlx, env->window);
-	ft_readprint(env);
+	//mlx_clear_window(env->mlx, env->window);
+	//ft_readprint(env);
+	ft_img_put(env);
 	return (1);
 }
 
@@ -84,8 +94,8 @@ int			main(int argc, char **argv)
 	env->mlx = mlx_init();
 	env->window = mlx_new_window(env->mlx, SCREEN_X, SCREEN_Y, "fdf");
 	mlx_key_hook(env->window, ft_key, env);
+	mlx_expose_hook(env->window, ft_img_put, env);
 	mlx_hook(env->window, 17, (1L << 17), ft_exit, env);
-	ft_readprint(env);
 	mlx_loop(env->mlx);
 	freemap(env);
 	free(env);

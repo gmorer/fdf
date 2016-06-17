@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 15:31:09 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/15 13:42:21 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/17 14:35:40 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char		***ft_read(char *argv)
 	if (!(rslt = getcherddd(argv)) ||
 		((fd = open(argv, O_RDONLY)) == -1))
 	{
-		ft_putendl("error");
+		ft_putendl("usage: ./fdf [file]");
 		return (NULL);
 	}
 	len = 0;
@@ -87,9 +87,8 @@ char		***ft_read(char *argv)
 	close(fd);
 	if (testresult(rslt) == 0)
 	{
-		ft_putendl("error");
+		ft_putendl("baf file");
 		return (NULL);
 	}
-	ft_putendl("okay");
 	return (rslt);
 }

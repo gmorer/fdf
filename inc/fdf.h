@@ -6,13 +6,13 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:44:38 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/16 17:50:13 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/17 13:15:33 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# ifndef __APPLE__ && __MACH__
+# ifdef __APPLE__
 #  define UP 126
 #  define DOWN 125
 #  define LEFT 123
@@ -26,7 +26,7 @@
 #  define KEY_D 2
 #  define SPACE 49
 # endif
-# ifndef __LINUX__
+# ifdef __LINUX__
 #  define UP 65362
 #  define DOWN 65364
 #  define LEFT 65361
@@ -71,12 +71,17 @@ typedef struct		s_env
 {
 	void	*mlx;
 	void	*window;
+	void	*img;
 	double	xaxe;
 	double	yaxe;
 	double	sinxaxe;
 	double	sinyaxe;
 	char	***map;
+	char	*pixel_img;
 	double	zoom;
+	int		bpp;
+	int		s_line;
+	int		ed;
 	int		posx;
 	int		posy;
 	int		side;
