@@ -26,7 +26,7 @@
 #  define KEY_D 2
 #  define SPACE 49
 # endif
-# ifdef __LINUX__
+# ifndef __APPLE__
 #  define UP 65362
 #  define DOWN 65364
 #  define LEFT 65361

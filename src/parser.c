@@ -15,10 +15,9 @@
 
 static int	ft_isnum(char *str)
 {
-	while (*str)
-		if (!ft_isdigit(*str++))
-			return (0);
-	return (1);
+	if (ft_isdigit(str[0]))
+		return (1);
+	return (0);
 }
 
 static int	testresult(char ***rslt)
@@ -57,8 +56,6 @@ static char	***getcherddd(char *argv)
 	if (len == 0)
 		return (NULL);
 	rslt = malloc(sizeof(char**) * (len + 1));
-	ft_putnbr(len);
-	ft_putchar('\n');
 	while (len)
 	{
 		rslt[len] = NULL;

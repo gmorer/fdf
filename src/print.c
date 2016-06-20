@@ -18,15 +18,13 @@ static	void	calcxy(int x, int y, t_line *line, t_env *env)
 	line->xb = line->xb * env->zoom + env->posx;
 	if (env->side == 1)
 	{
-		ft_putendl("lol");
 		line->yb = ((y * (sin(env->yaxe / 2) * 10)) - (ft_atoi(env->map[y][x]) *
-						env->sinyaxe) - ft_atoi(env->map[y][x]));
-		ft_putendl("lol1");
+					env->sinyaxe) - ft_atoi(env->map[y][x]));
 	}
 	else
 	{
 		line->yb = ((y * (sin(env->yaxe / 2) * 10)) + (ft_atoi(env->map[y][x]) *
-						(env->sinyaxe)) + ft_atoi(env->map[y][x]));
+					(env->sinyaxe)) + ft_atoi(env->map[y][x]));
 	}
 	line->yb = line->yb * 1 * env->zoom + env->posy;
 	ft_mlx_line(line, env);
@@ -41,26 +39,15 @@ static	void	ft_getline(int x, int y, t_env *env)
 	line->xa = line->xa * env->zoom + env->posx;
 	if (env->side == 1)
 		line->ya = ((y * (sin(env->yaxe / 2) * 10)) - (ft_atoi(env->map[y][x]) *
-						(env->sinyaxe)) - ft_atoi(env->map[y][x]));
+					(env->sinyaxe)) - ft_atoi(env->map[y][x]));
 	else
 		line->ya = ((y * (sin(env->yaxe / 2) * 10)) + (ft_atoi(env->map[y][x]) *
-						(env->sinyaxe)) + ft_atoi(env->map[y][x]));
+					(env->sinyaxe)) + ft_atoi(env->map[y][x]));
 	line->ya = line->ya * 1 * env->zoom + env->posy;
-	ft_putendl("start");
 	if (env->map[y] && env->map[y][x + 1])
-	{
-		ft_putstr("x = ");
-		ft_putnbr(x);
-		ft_putstr("  y = ");
-		ft_putnbr(y);
-		ft_putendl("\nend");
 		calcxy(x + 1, y, line, env);
-		ft_putendl("end2");
-	}
-		if (env->map[y + 1] && env->map[y + 1][x])
-		{
+	if (env->map[y + 1] && env->map[y + 1][x])
 		calcxy(x, y + 1, line, env);
-		}
 	free(line);
 }
 

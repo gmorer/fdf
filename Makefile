@@ -39,7 +39,7 @@ $(NAME): $(OBJ)
 linux : $(OBJ)
 		make -C libft
 		make -C minilibx
-		$(CC) $(CFLAGS) $(OBJ) libft/libft.a minilibx/libmlx.a -o $(NAME)
+		$(CC) $(CFLAGSX) $(OBJ) libft/libft.a minilibx/libmlx.a -o $(NAME)
 
 
 debug: $(OBJ)
@@ -50,7 +50,7 @@ debug: $(OBJ)
 
 $(OPATH)%.o: $(CPATH)%.c $(HFILES)
 		mkdir -p $(OPATH)
-		$(CC) $(CFLAGS) $(INC) $< -c -o $@
+		$(CC) $(CFLAGSX) $(INC) $< -c -o $@
 
 
 clean:
