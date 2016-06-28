@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:44:38 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/17 13:15:33 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/28 17:08:53 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 #  define KEY_D 100
 #  define SPACE 32
 # endif
-# define SCREEN_X 1080
-# define SCREEN_Y 800
+# define SCREEN_X 1920
+# define SCREEN_Y 1080
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>

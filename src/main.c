@@ -6,7 +6,7 @@
 /*   By: gmorer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 11:43:59 by gmorer            #+#    #+#             */
-/*   Updated: 2016/06/17 14:31:45 by gmorer           ###   ########.fr       */
+/*   Updated: 2016/06/28 17:09:58 by gmorer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_img_put(t_env *env)
 static int	ft_key(int key, t_env *env)
 {
 	if (key == RIGHT || key == LEFT)
-		env->xaxe += (key == RIGHT ? -0.1 : 0.1);
+		env->xaxe += (key == RIGHT ? -0.05 : 0.05);
 	if (key == DOWN || key == UP)
-		env->yaxe += (key == DOWN ? -0.1 : 0.1);
+		env->yaxe += (key == DOWN ? -0.05 : 0.05);
 	if (key == SHIFT)
 		env->zoom += 0.1;
 	if (key == CTR && env->zoom > 0.1)
@@ -93,7 +93,8 @@ int			main(int argc, char **argv)
 		return (0);
 	env->mlx = mlx_init();
 	env->window = mlx_new_window(env->mlx, SCREEN_X, SCREEN_Y, "fdf");
-	mlx_key_hook(env->window, ft_key, env);
+	//mlx_key_hook(env->window, ft_key, env);
+	mlx_hook(env->window,2, 3, ft_key, env);
 	mlx_expose_hook(env->window, ft_img_put, env);
 	mlx_hook(env->window, 17, (1L << 17), ft_exit, env);
 	mlx_loop(env->mlx);
