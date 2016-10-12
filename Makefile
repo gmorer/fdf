@@ -12,7 +12,7 @@
 
 NAME = fdf
 CC = clang
-CFLAGSX =  -L/usr/include -lXext -lX11 -lmlx -lm 
+CFLAGSX =  -L/usr/include -lXext -lX11 -lm 
 CFLAGS = -L minilibx -lmlx -framework OpenGL -framework AppKit
 CPATH = src/
 OPATH = obj/
@@ -50,7 +50,7 @@ debug: $(OBJ)
 
 $(OPATH)%.o: $(CPATH)%.c $(HFILES)
 		mkdir -p $(OPATH)
-		$(CC) $(CFLAGSX) $(INC) $< -c -o $@
+		$(CC)  $(INC) $< -c -o $@
 
 
 clean:
